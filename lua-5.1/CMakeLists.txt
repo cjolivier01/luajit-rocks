@@ -72,7 +72,7 @@ IF(THREADS_FOUND)
 ENDIF()
 
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_BINARY_DIR} src)
-CONFIGURE_FILE(src/luaconf.h.in 
+CONFIGURE_FILE(src/luaconf.h.in
   ${CMAKE_CURRENT_BINARY_DIR}/luaconf.h)
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/luaconf.h src/lua.h src/lauxlib.h src/lualib.h
   DESTINATION "${INSTALL_INCLUDE_SUBDIR}")
@@ -82,12 +82,12 @@ SET(SRC_LIB
   src/lobject.c src/lopcodes.c src/lparser.c src/lstate.c src/lstring.c src/ltable.c src/ltm.c
   src/lundump.c src/lvm.c src/lzio.c
   src/lauxlib.c src/lbaselib.c src/ldblib.c src/liolib.c
-  src/lmathlib.c src/loslib.c src/ltablib.c src/lstrlib.c src/loadlib.c src/linit.c  
+  src/lmathlib.c src/loslib.c src/ltablib.c src/lstrlib.c src/loadlib.c src/linit.c
   ${CMAKE_CURRENT_BINARY_DIR}/luaconf.h)
 
 # Shared library and executables
 ADD_LIBRARY(liblua SHARED ${SRC_LIB})
-SET_TARGET_PROPERTIES(liblua PROPERTIES 
+SET_TARGET_PROPERTIES(liblua PROPERTIES
   PREFIX "lib" IMPORT_PREFIX "lib" OUTPUT_NAME "lua")
 ADD_EXECUTABLE(lua src/lua.c ${SRC_LIB})
 ADD_EXECUTABLE(luac src/luac.c src/print.c ${SRC_LIB})
